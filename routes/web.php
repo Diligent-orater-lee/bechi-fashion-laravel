@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::domain('verse.' . env('APP_URL'))->group(function () {
+    Route::get('/', function () {
+        return view('bechi-verse');
+    });
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
