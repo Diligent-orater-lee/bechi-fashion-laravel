@@ -1,12 +1,12 @@
-@extends('common-views.master')
+@extends('customer.common-views.master')
 
 @section('header')
-    @include('common-views.heads.homepage-head')
+    @include('customer.common-views.heads.homepage-head')
 @endsection
 
 @section('content')
     {{-- The top level nav bar  --}}
-    @include('common-views.partial-headers.home-page-header')
+    @include('customer.common-views.partial-headers.home-page-header')
     {{-- The top level nav bar end --}}
 
     {{-- The first page video  --}}
