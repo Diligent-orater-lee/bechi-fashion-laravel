@@ -1,4 +1,4 @@
-@extends('customer.common-views.master')
+@extends('layouts.master')
 
 @section('header')
     <script>alert('This is supposed to be pubg verse')</script>

@@ -1,4 +1,4 @@
-@extends('customer.common-views.master')
+@extends('layouts.master')
 
 @section('header')
     @include('customer.common-views.heads.homepage-head')

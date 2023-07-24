@@ -13,14 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::domain('admin.' . env('APP_URL'))->group(function () {
+    Route::get('/', function () {
+        return view('admin.home');
+    })->name('admin.home');
+});
+
 Route::domain('verse.' . env('APP_URL'))->group(function () {
     Route::get('/', function () {
         return view('customer.verses.bechi-verse');
-    });
+    })->name('verses.bechiverse');
 
     Route::get('pubg', function () {
         return view('customer.verses.pugb-verse');
-    });
+    })->name('verses.pubgverse');
 });
 
 Route::get('/', function () {
