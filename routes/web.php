@@ -27,6 +27,10 @@ Route::domain('verse.' . env('APP_URL'))->group(function () {
     Route::get('pubg', function () {
         return view('customer.verses.pugb-verse');
     })->name('verses.pubgverse');
+
+    Route::get('kera', function () {
+        return view('customer.verses.kera-verse');
+    })->name('verses.keraverse');
 });
 
 Route::get('/', function () {
