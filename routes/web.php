@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::domain('admin.' . env('APP_URL'))->group(function () {
-    Route::get('/', function () {
-        return view('admin.home');
-    })->name('admin.home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin'])->name('login');
+
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('finishLogin');
+
+    Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 });
 
 Route::domain('verse.' . env('APP_URL'))->group(function () {
