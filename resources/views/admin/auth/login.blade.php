@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+ @include('admin.partials.head')
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container h-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>

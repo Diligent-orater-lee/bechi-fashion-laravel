@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+}
+
+nav {
+    height: 48px;
+}
+
+.container {
+    height: calc(100% - 48px);
+}
+
+.hoverable-gif-view {
+    width: 180px;
+    height: 180px;
+}
+
+.hoverable-gif-view img {
+    height: 120px !important;
+    width: 120px !important;
+
+    left: 60px !important;
+    top: 20px !important;
+}
+
+#home-action-tool-buttons .card:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
