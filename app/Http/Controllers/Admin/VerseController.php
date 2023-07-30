@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreVerseDetailsRequest;
 
 class VerseController extends Controller
 {
@@ -37,8 +37,15 @@ class VerseController extends Controller
         return view('admin.modules.verse-management.add-verse');
     }
 
-    public function addVerse()
+    public function addVerse(StoreVerseDetailsRequest $request)
     {
+        $validated = $request->validated();
+        dd($validated);
+        if ($validated->fails()) {
+            return redirect()->back()->withErrors($validated->errors());
+        }
+
+
         return view('admin.modules.verse-management.list-verses')->with('success', 'Verse added successfully!');
     }
 }

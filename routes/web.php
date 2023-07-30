@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\VerseController;
+use App\Http\Controllers\Customer\CustomerVerseController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -45,6 +46,10 @@ Route::domain('verse.' . env('APP_URL'))->group(function () {
     Route::get('kera', function () {
         return view('customer.verses.kera-verse');
     })->name('verses.keraverse');
+
+    Route::prefix('models')->group(function () {
+        Route::get('/{id}', [CustomerVerseController::class, "loadVerse"])->name('verses.models.loadSingleModel');
+    });
 });
 
 Route::get('/', function () {
