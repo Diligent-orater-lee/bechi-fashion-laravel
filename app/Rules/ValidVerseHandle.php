@@ -15,6 +15,10 @@ class ValidVerseHandle implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
+        if (!request()->is_ar_available) {
+            return;
+        }
+        dd(!!$this->isVerseValid($value));
         if (!$this->isVerseValid($value)) {
             $fail('Verse name is not valid!');
         } else if (!$this->isVerseHandleUnique($value)) {
@@ -23,7 +27,7 @@ class ValidVerseHandle implements ValidationRule
     }
 
     private function isVerseValid(string $verseHandle) {
-        return preg_match('/[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?/', $verseHandle);
+        return preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/i', $verseHandle);
     }
 
     private function getVerseDetails(string $verseHandle): VerseDetails | null

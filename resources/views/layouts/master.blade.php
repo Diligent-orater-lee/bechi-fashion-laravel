@@ -8,4 +8,5 @@
         @yield('content')
         @yield('footer')
     </body>
+    <div id="toaster"></div>
 </html>

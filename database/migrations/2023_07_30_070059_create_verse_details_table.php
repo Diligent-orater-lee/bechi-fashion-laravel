@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('verse_handle')->nullable()->unique();
             $table->string('ar_project_url')->nullable();
             $table->string('verse_audio_url')->nullable();
+            $table->softDeletes();
         });
     }
 

@@ -6,7 +6,7 @@
     <script>
         $(() => {
             const arAvailableContainer = $('#ar-available-container');
-            const switchDefaultValue = false;
+            const switchDefaultValue = true;
             const arAvailableSwitchHandler = (value) => {
                 if (value) {
                     arAvailableContainer.removeClass('d-none');
@@ -81,9 +81,20 @@
                     },
                 ]
             });
+            $('#submit-button').dxButton({
+                stylingMode: 'contained',
+                text: 'Submit',
+                type: 'success',
+                width: 120,
+                onClick: () => submitForm(),
+            });
 
             const arAvailableSwitch = $('#is_ar_available').dxSwitch('instance');
 
+            function submitForm() {
+                $('#is_ar_available_input').prop('checked', arAvailableSwitch.instance().option("value"));
+                $('form').submit();
+            }
         });
     </script>
 @endsection
@@ -115,7 +126,7 @@
                         Add a verse
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.verses.add') }}" method="POST">
+                        <form action="{{ route('admin.verses.add') }}" method="POST" >
                             @csrf
                             <div class="dx-field">
                                 <div class="dx-field-label">Verse name</div>
@@ -133,6 +144,7 @@
                                 <div class="dx-field-label">Is AR available</div>
                                 <div class="dx-field-value">
                                     <div id="is_ar_available"></div>
+                                    <input id="is_ar_available_input" hidden name="is_ar_available" type="checkbox">
                                 </div>
                             </div>
                             <div id="ar-available-container">
@@ -155,7 +167,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="mt-3" type="submit" class="btn btn-primary">Submit</button>
+                            <div class="mt-3 text-center">
+                                <div id="submit-button"></div>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVerseDetailsRequest;
+use App\Models\VerseDetails;
 
 class VerseController extends Controller
 {
@@ -29,7 +30,8 @@ class VerseController extends Controller
 
     public function listVerses()
     {
-        return view('admin.modules.verse-management.list-verses');
+        $verses = VerseDetails::all()->toArray();
+        return view('admin.modules.verse-management.list-verses', ['verses' => $verses]);
     }
 
     public function loadAddVerseView()
@@ -39,13 +41,16 @@ class VerseController extends Controller
 
     public function addVerse(StoreVerseDetailsRequest $request)
     {
-        $validated = $request->validated();
-        dd($validated);
-        if ($validated->fails()) {
-            return redirect()->back()->withErrors($validated->errors());
-        }
+        $verseDetails = new VerseDetails([
+            'verse_name' => $request->verse_name,
+            'verse_description' => $request->verse_description,
+            'is_ar_available' => $request->is_ar_available ? 1 : 0,
+            'verse_handle' => $request->is_ar_available ? $request->verse_handle : null,
+            'ar_project_url' => $request->is_ar_available ? $request->ar_project_url : null,
+            'verse_audio_url' => $request->is_ar_available ? $request->verse_audio_url : null
+        ]);
+        $verseDetails->save();
 
-
-        return view('admin.modules.verse-management.list-verses')->with('success', 'Verse added successfully!');
+        return redirect()->route('admin.verses.managment')->with('success', 'Verse added successfully!');
     }
 }
