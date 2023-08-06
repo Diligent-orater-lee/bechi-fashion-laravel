@@ -18,7 +18,6 @@ class ValidVerseHandle implements ValidationRule
         if (!request()->is_ar_available) {
             return;
         }
-        dd(!!$this->isVerseValid($value));
         if (!$this->isVerseValid($value)) {
             $fail('Verse name is not valid!');
         } else if (!$this->isVerseHandleUnique($value)) {

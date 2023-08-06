@@ -30,7 +30,10 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
         Route::get('/list', [VerseController::class, 'listVerses'])->name('admin.verses.managment');
 
         Route::get('/add', [VerseController::class, 'loadAddVerseView'])->name('admin.verses.addView');
+
         Route::post('/add', [VerseController::class, 'addVerse'])->name('admin.verses.add');
+
+        Route::delete('/delete/{id}', [VerseController::class, 'deleteVerse'])->name('admin.verses.delete');
     });
 });
 

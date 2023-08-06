@@ -53,4 +53,12 @@ class VerseController extends Controller
 
         return redirect()->route('admin.verses.managment')->with('success', 'Verse added successfully!');
     }
+
+    public function deleteVerse(string $id)
+    {
+        $verseDetails = VerseDetails::find($id);
+        $verseDetails->delete();
+
+        return redirect()->route('admin.verses.managment')->with('success', 'Verse deleted successfully!');
+    }
 }
