@@ -42,13 +42,13 @@ Route::domain('verse.' . env('APP_URL'))->group(function () {
         return view('customer.verses.bechi-verse');
     })->name('verses.bechiverse');
 
-    Route::get('pubg', function () {
-        return view('customer.verses.pugb-verse');
-    })->name('verses.pubgverse');
+    // Route::get('pubg', function () {
+    //     return view('customer.verses.pugb-verse');
+    // })->name('verses.pubgverse');
 
-    Route::get('kera', function () {
-        return view('customer.verses.kera-verse');
-    })->name('verses.keraverse');
+    // Route::get('kera', function () {
+    //     return view('customer.verses.kera-verse');
+    // })->name('verses.keraverse');
 
     Route::prefix('models')->group(function () {
         Route::get('/{id}', [CustomerVerseController::class, "loadVerse"])->name('verses.models.loadSingleModel');
