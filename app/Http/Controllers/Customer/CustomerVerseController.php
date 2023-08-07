@@ -11,19 +11,11 @@ class CustomerVerseController extends Controller
 {
     public function loadVerse(Request $request, string $id)
     {
-        if ($id === "bechi") {
-            return view('customer.verses.verse-loader', ['verseURL' => "https://bechiverse.diligentsmart.com"]);
-        } else if ($id === "pubg") {
-            return view('customer.verses.verse-loader', ['verseURL' => "https://pubgverse.diligentsmart.com"]);
-        } else if ($id === "kera") {
-            return view('customer.verses.verse-loader', ['verseURL' => "https://keraverse.diligentsmart.com"]);
+        $verse = VerseDetails::where('verse_handle', $id)->first();
+        if ($verse) {
+            return view('customer.verses.verse-loader', ['verseURL' => $verse->ar_project_url]);
         } else {
-            $verse = VerseDetails::where('verse_handle', $id)->first();
-            if ($verse) {
-                return view('customer.verses.verse-loader', ['verseURL' => $verse->ar_project_url]);
-            } else {
-                abort(404);
-            }
+            abort(404);
         }
     }
 
