@@ -5,9 +5,11 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
-iframe#my-iframe {
+iframe#ar-view-frame {
     height: 100%;
     width: 100%;
+    opacity: 0;
+    /* The view is hidden until the spash screen is completed */
 }
 
 div#iframeControls {
