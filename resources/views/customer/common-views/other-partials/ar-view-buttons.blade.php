@@ -1,8 +1,8 @@
 <div id="iframeControls">
-    <button type="button" id="stopBtn" onClick="ToggleSound()">
+    <button type="button" id="volume_stopBtn" onClick="ToggleSound()">
         <span class="material-icons">volume_off</span>
     </button>
-    <button type="button" id="expandBtn" onClick="ToggleFullscreen()">
+    <button type="button" id="fullscreenBtn" onClick="ToggleFullscreen()">
         <span class="material-icons">open_in_full</span>
     </button>
 </div>

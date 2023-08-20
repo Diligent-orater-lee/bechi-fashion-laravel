@@ -1,12 +1,5 @@
 import { environment } from './environment.js';
-
-const ToggleFullscreen = () => {
-    document.getElementById('ar-view-frame').requestFullscreen();
-}
-
-const ToggleSound = () => {
-    console.log("Toggle Sound");
-}
+import { SplashScreenCompleted, ToggleSound, ToggleFullscreen } from './ar-views-service.js';
 
 // Used to remove the 8th wall splash screen
 window.addEventListener('message', function(event) {
@@ -17,11 +10,12 @@ window.addEventListener('message', function(event) {
 
     // Check the message data
     if (event.data === 'arLoaded') {
-        splashScreenCompleted()
+        SplashScreenCompleted()
     }
 });
 
-function splashScreenCompleted() {
-    const mainFrame = document.getElementById('ar-view-frame');
-    mainFrame.style.opacity = 1;
-}
+const muteButton = document.getElementById('volume_stopBtn');
+const fullscreenButton = document.getElementById('fullscreenBtn');
+
+muteButton.addEventListener('click', ToggleSound);
+fullscreenButton.addEventListener('click', ToggleFullscreen);
