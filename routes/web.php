@@ -38,9 +38,7 @@ Route::domain('admin.' . env('APP_URL'))->group(function () {
 });
 
 Route::domain('verse.' . env('APP_URL'))->group(function () {
-    Route::get('/', function () {
-        return view('customer.verses.bechi-verse');
-    })->name('verses.bechiverse');
+    Route::get('/', [CustomerVerseController::class, "loadVerse"])->name('verses.bechiverse');
 
     Route::prefix('models')->group(function () {
         Route::get('/{id}', [CustomerVerseController::class, "loadVerse"])->name('verses.models.loadSingleModel');

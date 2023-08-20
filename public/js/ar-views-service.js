@@ -1,6 +1,13 @@
+import { environment } from "./environment.js";
+
 export function SplashScreenCompleted() {
-    const mainFrame = document.getElementById('ar-view-frame');
-    mainFrame.style.opacity = 1;
+    setTimeout(() => {
+        const ourSplashScreen = document.getElementById('bechi-splash-screen');
+        const mainFrame = document.getElementById('ar-view-frame');
+
+        ourSplashScreen.style.display = 'none';
+        mainFrame.style.opacity = 1;
+    }, 100)
 }
 
 export function ToggleSound() {
@@ -9,4 +16,13 @@ export function ToggleSound() {
 
 export function ToggleFullscreen() {
     document.getElementById('ar-view-frame').requestFullscreen();
+}
+
+export function PlaySplashScreen(playedOnce) {
+    const splashScreen = document.getElementById('bechi-splash-video');
+    if (playedOnce) {
+        // Set the video's current time to your desired start time (e.g., 5 seconds)
+        splashScreen.currentTime = environment.SPLASH_SCREEN_REPEAT_TIME;
+    }
+    splashScreen.play();
 }

@@ -9,13 +9,17 @@ use Illuminate\Http\Request;
 
 class CustomerVerseController extends Controller
 {
-    public function loadVerse(Request $request, string $id)
+    public function loadVerse(Request $request, string $id = "bechi")
     {
-        $verse = VerseDetails::where('verse_handle', $id)->first();
-        if ($verse) {
-            return view('customer.verses.verse-loader', ['verseURL' => $verse->ar_project_url]);
+        if ($id == "bechi") {
+            return view('customer.verses.verse-loader', ['verseURL' => 'https://bechioriginals.8thwall.app/bechi-verse']);
         } else {
-            abort(404);
+            $verse = VerseDetails::where('verse_handle', $id)->first();
+            if ($verse) {
+                return view('customer.verses.verse-loader', ['verseURL' => $verse->ar_project_url]);
+            } else {
+                abort(404);
+            }
         }
     }
 

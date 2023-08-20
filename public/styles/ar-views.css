@@ -22,3 +22,22 @@ div#iframeControls button{
     border: none;
     color: #ffffff70;
 }
+
+div#bechi-splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div#bechi-splash-screen video {
+    height: 80%;
+    object-fit: fill;
+}
