@@ -17,6 +17,7 @@ window.addEventListener('message', function(event) {
 const muteButton = document.getElementById('volume_stopBtn');
 const fullscreenButton = document.getElementById('fullscreenBtn');
 const splashVideo = document.getElementById('bechi-splash-video');
+splashVideo.play();
 
 let splashPlayedOnce = false;
 
