@@ -70,9 +70,14 @@
                     },
                 ]
             });
-            $('#verse_audio_url').dxTextBox({
-                value: '',
-                inputAttr: { 'name': 'verse_audio_url' },
+            $('#ar_permissions').dxTagBox({
+                value: ['CAMERA'],
+                items: [
+                    'CAMERA',
+                    'LOCATION',
+                    'MICROPHONE',
+                ],
+                inputAttr: { 'name': 'ar_permissions[]' },
             }).dxValidator({
                 validationRules: [
                     {
@@ -81,6 +86,17 @@
                     },
                 ]
             });
+            // $('#verse_audio_url').dxTextBox({
+            //     value: '',
+            //     inputAttr: { 'name': 'verse_audio_url' },
+            // }).dxValidator({
+            //     validationRules: [
+            //         {
+            //             type: 'required',
+            //             message: 'Required',
+            //         },
+            //     ]
+            // });
             $('#submit-button').dxButton({
                 stylingMode: 'contained',
                 text: 'Submit',
@@ -93,6 +109,7 @@
 
             function submitForm() {
                 $('#is_ar_available_input').prop('checked', arAvailableSwitch.instance().option("value"));
+
                 $('form').submit();
             }
         });
@@ -161,9 +178,9 @@
                                     </div>
                                 </div>
                                 <div class="dx-field">
-                                    <div class="dx-field-label">AR content audio URL</div>
+                                    <div class="dx-field-label">Project permissions</div>
                                     <div class="dx-field-value">
-                                        <div id="verse_audio_url"></div>
+                                        <div id="ar_permissions"></div>
                                     </div>
                                 </div>
                             </div>

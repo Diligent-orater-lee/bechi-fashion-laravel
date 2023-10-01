@@ -26,13 +26,10 @@ class StoreVerseDetailsRequest extends FormRequest
         return [
             "verse_name" => [
                 "required",
-                "string",
-                "max:255",
                 new UniqueVerseName(),
             ],
             "verse_handle" => [
                 "required_if:is_ar_available,*",
-                "max:63",
                 new ValidVerseHandle(),
             ],
         ];

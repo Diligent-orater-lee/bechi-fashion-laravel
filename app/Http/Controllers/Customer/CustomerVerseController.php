@@ -16,7 +16,9 @@ class CustomerVerseController extends Controller
         } else {
             $verse = VerseDetails::where('verse_handle', $id)->first();
             if ($verse) {
-                return view('customer.verses.verse-loader', ['verseURL' => $verse->ar_project_url]);
+                $verseURL = $verse->ar_project_url;
+                $versePermissions = explode(",", $verse->ar_permissions);
+                return view('customer.verses.verse-loader', ['verseURL' => $verseURL, 'versePermissions' => $versePermissions]);
             } else {
                 abort(404);
             }

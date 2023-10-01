@@ -18,6 +18,7 @@ class VerseDetails extends Model
         'is_ar_available',
         'verse_handle',
         'ar_project_url',
+        'ar_permissions',
         'verse_audio_url'
     ];
 }
