@@ -14,6 +14,12 @@ window.addEventListener('message', function(event) {
     }
 });
 
+window.addEventListener('load', function() {
+    navigator.permissions.query({ name: "geolocation" }).then(function(result) {
+        console.log(result);
+    });
+});
+
 const muteButton = document.getElementById('volume_stopBtn');
 const fullscreenButton = document.getElementById('fullscreenBtn');
 const splashVideo = document.getElementById('bechi-splash-video');

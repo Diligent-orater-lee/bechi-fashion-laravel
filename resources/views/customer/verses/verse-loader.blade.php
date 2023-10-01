@@ -7,5 +7,5 @@
 @section('content')
     @include('customer.common-views.other-partials.ar-view-buttons')
     @include('customer.common-views.other-partials.bechi-splash-screen')
-    <iframe src="{{ $verseURL }}" class="default-iframe" id="ar-view-frame" allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"></iframe>
+    <iframe src="{{ $verseURL }}" class="default-iframe" id="ar-view-frame" allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;geolocation"></iframe>
 @endsection
