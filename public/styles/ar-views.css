@@ -1,43 +1,7 @@
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-iframe#ar-view-frame {
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    /* The view is hidden until the spash screen is completed */
-}
-
-div#iframeControls {
-    position: fixed;
-    right: 18px;
-    top: 18px;
-}
-div#iframeControls button{
-    background: transparent;
-    border: none;
-    color: #ffffff70;
-}
-
-div#bechi-splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-div#bechi-splash-screen video {
-    height: 80%;
-    object-fit: fill;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }

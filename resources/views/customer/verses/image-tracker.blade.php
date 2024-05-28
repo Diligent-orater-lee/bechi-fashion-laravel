@@ -83,10 +83,10 @@
         // In order to use camera and motion data, we need to ask the users for permission
         // The Zappar library comes with some UI to help with that, so let's use it
         ZapparThree.permissionRequestUI().then((granted) => {
-        // If the user granted us the permissions we need then we can start the camera
-        // Otherwise let's them know that it's necessary with Zappar's permission denied UI
-        if (granted) camera.start();
-        else ZapparThree.permissionDeniedUI();
+            // If the user granted us the permissions we need then we can start the camera
+            // Otherwise let's them know that it's necessary with Zappar's permission denied UI
+            if (granted) camera.start();
+            else ZapparThree.permissionDeniedUI();
         });
 
         // The Zappar component needs to know our WebGL context, so set it like this:
@@ -128,19 +128,25 @@
         imageTrackerGroup.add(contentGroup);
 
         // when we lose sight of the camera, hide the scene contents.
-        imageTracker.onVisible.bind(() => { scene.visible = true; });
-        imageTracker.onNotVisible.bind(() => { scene.visible = false; });
+        imageTracker.onVisible.bind(() => {
+            scene.visible = true;
+            video.play();
+        });
+        imageTracker.onNotVisible.bind(() => {
+            scene.visible = false;
+            video.pause();
+        });
 
         // Use a function to render our scene as usual
         function render() {
-        // The Zappar camera must have updateFrame called every frame
-        camera.updateFrame(renderer);
+            // The Zappar camera must have updateFrame called every frame
+            camera.updateFrame(renderer);
 
-        // Draw the ThreeJS scene in the usual way, but using the Zappar camera
-        renderer.render(scene, camera);
+            // Draw the ThreeJS scene in the usual way, but using the Zappar camera
+            renderer.render(scene, camera);
 
-        // Call render() again next frame
-        requestAnimationFrame(render);
+            // Call render() again next frame
+            requestAnimationFrame(render);
         }
 
         // Start things off
