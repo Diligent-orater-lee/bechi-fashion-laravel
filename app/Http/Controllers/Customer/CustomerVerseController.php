@@ -9,20 +9,9 @@ use Illuminate\Http\Request;
 
 class CustomerVerseController extends Controller
 {
-    public function loadVerse(Request $request, string $id = "bechi")
+    public function loadVerse(Request $request)
     {
-        if ($id == "bechi") {
-            return view('customer.verses.verse-loader', ['verseURL' => 'https://bechioriginals.8thwall.app/bechi-verse']);
-        } else {
-            $verse = VerseDetails::where('verse_handle', $id)->first();
-            if ($verse) {
-                $verseURL = $verse->ar_project_url;
-                $versePermissions = explode(",", $verse->ar_permissions);
-                return view('customer.verses.verse-loader', ['verseURL' => $verseURL, 'versePermissions' => $versePermissions]);
-            } else {
-                abort(404);
-            }
-        }
+        return "view('customer.verses.verse-loader', ['verseURL' => 'https://bechioriginals.8thwall.app/bechi-verse'])";
     }
 
     public function addVerse(StoreVerseDetailsRequest $request) {

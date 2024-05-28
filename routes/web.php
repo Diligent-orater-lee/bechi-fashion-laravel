@@ -17,34 +17,6 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::domain('admin.' . env('APP_URL'))->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-
-    Route::get('/login', [LoginController::class, 'adminLogin'])->name('login');
-
-    Route::post('/login', [LoginController::class, 'login'])->name('finishLogin');
-
-    Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
-
-    Route::prefix('verses')->group(function () {
-        Route::get('/list', [VerseController::class, 'listVerses'])->name('admin.verses.managment');
-
-        Route::get('/add', [VerseController::class, 'loadAddVerseView'])->name('admin.verses.addView');
-
-        Route::post('/add', [VerseController::class, 'addVerse'])->name('admin.verses.add');
-
-        Route::delete('/delete/{id}', [VerseController::class, 'deleteVerse'])->name('admin.verses.delete');
-    });
-});
-
-Route::domain('verse.' . env('APP_URL'))->group(function () {
-    Route::get('/', [CustomerVerseController::class, "loadVerse"])->name('verses.bechiverse');
-
-    Route::prefix('models')->group(function () {
-        Route::get('/{id}', [CustomerVerseController::class, "loadVerse"])->name('verses.models.loadSingleModel');
-    });
-});
-
-Route::get('/', function () {
-    return view('customer.welcome');
+Route::get('/models/naruto', function () {
+    return view('customer.verses.image-tracker');
 });
